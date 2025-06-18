@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Users</h1>
+  <div class="d-flex gap-2 pb-5">
+    <input type="text" [(ngModel)]="role" placeholder="type your role...">
+    <button (click)="search()" class="btn btn-secondary">Search</button>
+  </div>
+  <div class="cards-wrapper d-flex gap-5">
+    @for(user of filteredUsers; track user.phoneNumber ){
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <img [src]="user.profilePicture" class="card-img-top rounded-circle" alt="...">
+        <div
+          [ngClass]="{'bg-green':user.roleChip ==='user', 'bg-red':user.roleChip ==='admin', 'bg-yellow':user.roleChip ==='moderator'}">
+          <h5 class="card-title">{{user.roleChip}}</h5>
+        </div>
+        <p class="card-text">{{user.userName}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{user.email}}</li>
+        <li class="list-group-item">{{user.phoneNumber}}</li>
+        <li class="list-group-item">{{user.birthdate}}</li>
+      </ul>
+    </div>
+    }
+  </div>
+
+</div>
